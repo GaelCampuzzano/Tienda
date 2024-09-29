@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tienda
 {
-    class Ticket
+    public class Ticket
     {
         public List<Articulo> Lista { get; set; }
         public decimal Total { get; set; }
@@ -16,5 +13,23 @@ namespace Tienda
         public int NumCompra { get; set; }
         public decimal IVA { get; set; }
 
+        public void Imprimir()
+        {
+            Console.Clear();
+            Console.WriteLine($"Fecha: {Fecha}");
+            Console.WriteLine($"Número de Compra: {NumCompra}");
+            Console.WriteLine("Artículos:");
+
+            foreach (Articulo articulo in Lista)
+            {
+                Console.WriteLine($"{articulo.Nombre} - {articulo.Precio:C2} x {articulo.Cantidad} = {articulo.Precio * articulo.Cantidad:C2}");
+            }
+
+            Console.WriteLine($"Subtotal: {Total - IVA:C2}");
+            Console.WriteLine($"IVA: {IVA:C2}");
+            Console.WriteLine($"Total: {Total:C2}");
+            Console.WriteLine($"Pagado: {Pagado:C2}");
+            Console.WriteLine($"Cambio: {Cambio:C2}");
+        }
     }
 }
